@@ -74,7 +74,7 @@ final class UserAuthMiddlewareByUserId: Middleware {
             }).tryFlatMap{ response -> EventLoopFuture<Response> in
                 let user = try response.content.decode(User.self)
                 if response.status == .ok {
-                    return Order.query(on:request.db)
+                    return Cart.query(on:request.db)
                         .filter( \.$user_id == user.id)
                         .all()
                         .tryFlatMap { user -> EventLoopFuture<Response> in

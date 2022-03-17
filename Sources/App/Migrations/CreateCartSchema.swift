@@ -3,7 +3,7 @@ import FluentSQL
 
 struct CreateCartSchema: Migration {
     func prepare(on database: Database) -> EventLoopFuture<Void> {
-        return database.schema("orders")
+        return database.schema("carts")
             .id()
             .field("user_id", .uuid, .required)
             .field("created_at", .datetime, .required)
@@ -12,6 +12,6 @@ struct CreateCartSchema: Migration {
     }
 
     func revert(on database: Database) -> EventLoopFuture<Void> {
-        return database.schema("orders").delete()
+        return database.schema("carts").delete()
     }    
 }

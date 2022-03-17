@@ -1,8 +1,8 @@
 import Vapor
 import Fluent
 
-final class Order: Model, Content, Codable {
-    static let schema = "orders"
+final class Cart: Model, Content, Codable {
+    static let schema = "carts"
     
     @ID(key: .id)
     var id: UUID?
@@ -20,7 +20,7 @@ final class Order: Model, Content, Codable {
     
     init(id: UUID? = nil, user_id: UUID, created_at: Date?, updated_at: Date?) {
         self.id = id
-        self.userID = userID
+        self.user_id = user_id
         self.created_at = created_at
         self.updated_at = updated_at
     }
